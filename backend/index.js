@@ -12,7 +12,7 @@ const app = express();
 //middleware
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(cookieParser)
+app.use(cookieParser());
 const corsOptions={
     origin:'http//localhost:5173',
     credentials:true
@@ -23,7 +23,7 @@ const PORT= process.env.PORT|| 3001;
 
 //api's
 app.use("/api/v1/user",userRoute);
-// "htttp://localhost:8001/api/v1/user/register"
+// "htttp://localhost:7999/api/v1/user/register"
 
 app.listen(PORT,()=>{
     connectDb();

@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 import dotenv from "dotenv"
 import connectDb from "./utils/db.js";
+import userRoute from "./routes/user.route.js"
 
 dotenv.config({});
 
@@ -19,6 +20,11 @@ const corsOptions={
 app.use(cors(corsOptions));
 
 const PORT= process.env.PORT|| 3001;
+
+//api's
+app.use("/api/v1/user",userRoute);
+// "htttp://localhost:8001/api/v1/user/register"
+
 app.listen(PORT,()=>{
     connectDb();
     console.log(`Server is running at port ${PORT}`)

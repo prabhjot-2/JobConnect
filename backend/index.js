@@ -4,6 +4,8 @@ import cors from "cors"
 import dotenv from "dotenv"
 import connectDb from "./utils/db.js";
 import userRoute from "./routes/user.route.js"
+import companyRoute from "./routes/company.route.js"
+
 
 dotenv.config({});
 
@@ -24,6 +26,9 @@ const PORT= process.env.PORT|| 3001;
 //api's
 app.use("/api/v1/user",userRoute);
 // "htttp://localhost:7999/api/v1/user/register"
+
+app.use("/api/v1/company",companyRoute);
+
 
 app.listen(PORT,()=>{
     connectDb();

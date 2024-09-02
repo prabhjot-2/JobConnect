@@ -32,6 +32,7 @@ export const postJob = async (req, res) => {
         success: false,
       });
     }
+    
     const job = await Job.create({
       title,
       description,
@@ -60,12 +61,14 @@ export const getAllJobs = async (req, res) => {
 
     const query = {
       $or: [
-        { title: { $reges: keyword, $options: "i" } },
+        { title: { $regex: keyword, $options: "i" } },
         { description: { $regex: keyword, $options: "i" } }, // i da mtlb ki case insensitive jo keyword hovega
       ],
     };
 
-    const jobs = await Job.find(query); // use populate which is very imporatnt
+    const jobs = await Job.find(query).populate({
+      path:"company"
+    }).sort({createdAt:-1}); // use populate which is very imporatnt , e us object di id nub path dinda jis nal oo company id to company details lai ske
     if (!jobs) {
       return res.status(404).json({
         message: "Jobs not found",

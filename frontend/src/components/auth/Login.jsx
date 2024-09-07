@@ -4,7 +4,9 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { RadioGroup } from "../ui/radio-group";
 import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import { USER_API_END_POINT } from '@/utils/constant'
 
 const Login = () => {
 
@@ -16,12 +18,31 @@ const Login = () => {
     role:"",
 });
 
+const navigate= useNavigate();
+
 const changeEventHandler=(e)=>{
     setInput({...input, [e.target.name]:e.target.value});
 }
 const submitHandler= async(e)=>{
   e.preventDefault();
-  console.log(input)
+  // console.log(input)
+  try {
+    const res= await axios.post(`${USER_API_END_POINT}/login`,input,{
+      headers:{
+        "Content-Type":"application/json"
+      },
+      withCredentials:true,
+    });
+
+    if(res.data.success){
+      navigate("/")
+      toast.success(res.data.message)
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response.data.message)
+    
+  }
 }
 
   return (

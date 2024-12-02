@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { RadioGroup, RadioGroupItem } from './ui/radio-group'
 import { Label } from './ui/label'
 import { setSearchedQuery } from '@/redux/jobSlice'
+import { useDispatch } from 'react-redux'
 
 const fitlerData = [
     {

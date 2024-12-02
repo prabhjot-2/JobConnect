@@ -40,7 +40,6 @@ const Navbar = () => {
         <div className="flex items-center gap-12">
           <ul className="flex font-medium items-center gap-5">
             {user && user.role === "recruiter" ? (
-              Avatar(
                 <>
                   <li>
                     <Link to="/admin/companies">Companies</Link>
@@ -49,7 +48,6 @@ const Navbar = () => {
                     <Link to="/admin/jobs">Jobs</Link>
                   </li>
                 </>
-              )
             ) : (
               <>
                 <li>

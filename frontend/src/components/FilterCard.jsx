@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 const fitlerData = [
     {
         fitlerType: "Location",
-        array: ["Delhi NCR", "Bangalore", "Hyderabad", "Pune", "Mumbai"]
+        array: ["Noida", "Bangalore", "Hyderabad", "Remote", "Mumbai"]
     },
     {
         fitlerType: "Industry",
@@ -15,7 +15,7 @@ const fitlerData = [
     },
     {
         fitlerType: "Salary",
-        array: ["0-40k", "42-1lakh", "1lakh to 5lakh"]
+        array: ["130000LPA", "42-1lakh", "1lakh to 5lakh"]
     },
 ]
 
